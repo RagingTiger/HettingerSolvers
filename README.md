@@ -12,7 +12,7 @@ Below are the *instructions* for running the **JupyterLab** notebook.
 ## Development
 To deploy a simple *single user* environment (i.e. for *development*) simply
 run the following *Docker* commands (**note**: this assumes you are already
-in the `HettingerSolvers` directory):
+in the `Modern-Solvers-PyCon2019` directory):
 ```
 docker run -d \
            --rm \
