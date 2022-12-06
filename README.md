@@ -16,13 +16,15 @@ in the `Modern-Solvers-PyCon2019` directory):
 ```
 docker run -d \
            --rm \
-           --name hettsolver.dev \
+           --name solvers \
            -e JUPYTER_ENABLE_LAB=yes \
-           -p 8888:8888 \
+           -p 8888 \
            -v $PWD:/home/jovyan \
-           jupyter/scipy-notebook:lab-3.4.4 && \
+           jupyter/scipy-notebook:lab-3.5.0 && \
 sleep 5 && \
-docker logs hettsolver.dev 2>&1 | grep "http://127.0.0.1" | tail -n 1 | awk '{print $2}'
+  docker logs solvers 2>&1 | grep "http://127.0.0.1" | tail -n 1 | \
+    awk '{print $2}' | sed "s/:8888/:$(docker port solvers | \
+    grep ':::' | awk '{print $3'} | sed 's/::://g')/g"
 ```
 Click the link (should look similar to:
 http://127.0.0.1:8888/lab?token=LONG_ALPHANUMERIC_STRING) which will
